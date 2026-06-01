@@ -1,0 +1,33 @@
+================================================================================
+SAMPLE LOG — Error Handling Scenarios
+================================================================================
+This log demonstrates the bot's error handling for various failure modes:
+validation errors, API errors, network failures, and retry with backoff.
+================================================================================
+
+--- Validation Error: Missing price for LIMIT order ---
+
+2026-06-01 06:40:01 | INFO     | bot.orders | Placing LIMIT BUY order: BTCUSDT qty=0.01 price=None
+2026-06-01 06:40:01 | ERROR    | cli | Validation Error: Price is required and must be positive for LIMIT orders.
+
+--- API Error: Invalid symbol ---
+
+2026-06-01 06:41:15 | INFO     | bot.orders | Placing MARKET BUY order: INVALIDUSDT qty=0.01
+2026-06-01 06:41:15 | DEBUG    | bot.client | REQUEST  [attempt 1/4] POST https://testnet.binancefuture.com/fapi/v1/order params={'symbol': 'INVALIDUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01, 'timestamp': 1748757675000, 'signature': '...'}
+2026-06-01 06:41:16 | DEBUG    | bot.client | RESPONSE 400 {"code":-1121,"msg":"Invalid symbol."}
+2026-06-01 06:41:16 | ERROR    | cli | API Error (-1121): Invalid symbol.
+
+--- Network Error with Retry and Exponential Backoff ---
+
+2026-06-01 06:45:30 | INFO     | bot.orders | Placing MARKET BUY order: BTCUSDT qty=0.01
+2026-06-01 06:45:30 | DEBUG    | bot.client | REQUEST  [attempt 1/4] POST https://testnet.binancefuture.com/fapi/v1/order params={...}
+2026-06-01 06:45:40 | WARNING  | bot.client | Timeout (attempt 1): HTTPSConnectionPool(host='testnet.binancefuture.com', port=443): Read timed out. (read timeout=10)
+2026-06-01 06:45:40 | INFO     | bot.client | Backing off 1.0s before retry...
+2026-06-01 06:45:41 | DEBUG    | bot.client | REQUEST  [attempt 2/4] POST https://testnet.binancefuture.com/fapi/v1/order params={...}
+2026-06-01 06:45:42 | DEBUG    | bot.client | RESPONSE 200 {"orderId":4820470205,"symbol":"BTCUSDT","status":"FILLED",...}
+2026-06-01 06:45:42 | INFO     | bot.orders | Order placed — ID: 4820470205, Status: FILLED
+
+--- Rate Limiter Warning ---
+
+2026-06-01 06:50:00 | WARNING  | bot.client | Rate limit reached (1200/1200 in 60s window)
+2026-06-01 06:50:00 | ERROR    | cli | API Error (-1): Local rate limit exceeded — too many requests.

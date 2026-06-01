@@ -1,0 +1,11 @@
+================================================================================
+SAMPLE LOG — MARKET BUY Order
+================================================================================
+This log shows a successful MARKET BUY order for 0.01 BTCUSDT on the
+Binance Futures Testnet. Timestamps are in UTC.
+================================================================================
+
+2026-06-01 06:30:01 | INFO     | bot.orders | Placing MARKET BUY order: BTCUSDT qty=0.01
+2026-06-01 06:30:01 | DEBUG    | bot.client | REQUEST  [attempt 1/4] POST https://testnet.binancefuture.com/fapi/v1/order params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01, 'timestamp': 1748756401000, 'signature': 'a3b8c4d5e6f7...'}
+2026-06-01 06:30:02 | DEBUG    | bot.client | RESPONSE 200 {"orderId":4820468061,"symbol":"BTCUSDT","status":"FILLED","clientOrderId":"x-R4BD3S82","price":"0","avgPrice":"67532.10000","origQty":"0.010","executedQty":"0.010","cumQuote":"675.3210","timeInForce":"GTC","type":"MARKET","side":"BUY","stopPrice":"0","time":1748756402000,"updateTime":1748756402000}
+2026-06-01 06:30:02 | INFO     | bot.orders | Order placed — ID: 4820468061, Status: FILLED

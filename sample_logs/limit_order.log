@@ -1,0 +1,11 @@
+================================================================================
+SAMPLE LOG — LIMIT SELL Order
+================================================================================
+This log shows a LIMIT SELL order for 0.5 ETHUSDT placed on the
+Binance Futures Testnet. The order is placed with status NEW (pending fill).
+================================================================================
+
+2026-06-01 06:35:10 | INFO     | bot.orders | Placing LIMIT SELL order: ETHUSDT qty=0.5 price=3200.0
+2026-06-01 06:35:10 | DEBUG    | bot.client | REQUEST  [attempt 1/4] POST https://testnet.binancefuture.com/fapi/v1/order params={'symbol': 'ETHUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.5, 'price': 3200.0, 'timeInForce': 'GTC', 'timestamp': 1748756710000, 'signature': 'f1e2d3c4b5a6...'}
+2026-06-01 06:35:11 | DEBUG    | bot.client | RESPONSE 200 {"orderId":4820469102,"symbol":"ETHUSDT","status":"NEW","clientOrderId":"x-R4BD3S83","price":"3200.00","avgPrice":"0.00000","origQty":"0.500","executedQty":"0.000","cumQuote":"0.0000","timeInForce":"GTC","type":"LIMIT","side":"SELL","stopPrice":"0","time":1748756711000,"updateTime":1748756711000}
+2026-06-01 06:35:11 | INFO     | bot.orders | Order placed — ID: 4820469102, Status: NEW
