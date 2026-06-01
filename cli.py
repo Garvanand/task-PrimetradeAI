@@ -71,7 +71,7 @@ def _print_request_summary(
 ) -> None:
     """Render a coloured summary table before sending the order."""
     table = Table(
-        title="📋 Order Request",
+        title="Order Request",
         show_header=True,
         header_style="bold cyan",
         border_style="cyan",
@@ -96,7 +96,7 @@ def _print_request_summary(
 def _print_response(result) -> None:  # noqa: ANN001
     """Render the API response in a rich table."""
     table = Table(
-        title="✅ Order Response",
+        title="Order Response",
         show_header=True,
         header_style="bold green",
         border_style="green",
@@ -127,6 +127,7 @@ def _print_response(result) -> None:  # noqa: ANN001
     console.print(
         Panel(
             f"[bold green]Order {result.order_id} placed successfully![/bold green]",
+            title="Success",
             border_style="green",
         )
     )
