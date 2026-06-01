@@ -14,7 +14,6 @@ from typing import Any, Dict, Optional
 
 from bot.client import BinanceClient
 from bot.validators import (
-    ORDER_TYPE_API_MAP,
     validate_order_type,
     validate_price,
     validate_quantity,

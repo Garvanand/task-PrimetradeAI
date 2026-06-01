@@ -33,8 +33,8 @@ A **production-grade** Python CLI application for placing orders on [Binance Fut
               +-------------------+-------------------+
               |                   |                   |
      +--------v--------+ +-------v--------+ +--------v--------+
-     |   OrderManager  | |   Dashboard    | |   PriceFeed     |
-     |   (orders.py)   | | (dashboard.py) | | (websocket.py)  |
+     |   OrderManager  | |   Dashboard    | |   PriceFeed          |
+     |   (orders.py)   | | (dashboard.py) | | (websocket_feed.py)  |
      +--------+--------+ +-------+--------+ +--------+--------+
               |                   |                   |
               +-------------------+                   |

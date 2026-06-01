@@ -1,6 +1,9 @@
 # Environment
 .env
 
+# Runtime logs (sample_logs/ is tracked separately)
+logs/
+
 # Python
 __pycache__/
 *.py[cod]

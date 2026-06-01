@@ -33,7 +33,7 @@ from bot.utils import (
     fmt_status,
     fmt_timestamp,
 )
-from bot.websocket_feed import PriceFeed, TickerData
+from bot.websocket_feed import PriceFeed
 
 logger = logging.getLogger(__name__)
 console = Console()
